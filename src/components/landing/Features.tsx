@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { FileText, Activity, Users, MapPin, Siren, Megaphone, Network, ChartBar as BarChart3 } from "lucide-react";
 import vijayImg from "@/assets/IMG_8433.JPG.jpeg";
-import anbanImg from "@/assets/1000066594.jpg.jpeg";
+import anbanImg from "@/assets/1000066596.jpg.jpeg";
 
 const features = [
   { icon: FileText, t: "Complaint Registration", d: "One-tap submission with photo, location & category." },
@@ -54,8 +54,8 @@ export function Features() {
             </h2>
           </div>
 
-          {/* Cards — equal width, equal photo height */}
-          <div className="flex flex-col md:flex-row justify-center gap-8 max-w-3xl mx-auto">
+          {/* Cards — equal width, equal photo height, equal info height */}
+          <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 max-w-3xl mx-auto">
             {[
               {
                 img: vijayImg,
@@ -93,8 +93,8 @@ export function Features() {
                     {l.badge}
                   </div>
                 </div>
-                {/* Info panel */}
-                <div className="flex-1 px-6 py-5 border-t-2 border-[#C9A84C]/40" style={{ background: "#5A0000" }}>
+                {/* Info panel — fixed height so both cards match */}
+                <div className="h-[140px] px-6 py-5 border-t-2 border-[#C9A84C]/40" style={{ background: "#5A0000" }}>
                   <h3 className="font-display text-xl text-white mb-1">{l.name}</h3>
                   <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">{l.role}</div>
                   <p className="text-white text-sm leading-relaxed italic border-l-2 border-[#C9A84C] pl-3 opacity-90">
