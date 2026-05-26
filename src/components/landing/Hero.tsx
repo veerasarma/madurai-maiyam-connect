@@ -14,14 +14,11 @@ export function Hero() {
           className="w-full h-full object-cover object-center"
         />
         {/* dark wash for legibility */}
-        <div className="absolute inset-0 bg-[oklch(0.18_0.08_25/0.55)]" />
-        {/* fade to cream at bottom */}
-        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute inset-0 bg-black/50" />
+        {/* subtle top fade for navbar readability */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/40 to-transparent" />
       </div>
 
-      {/* glowing orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-[120px] z-0" />
-      <div className="absolute bottom-1/3 -right-32 w-96 h-96 rounded-full bg-gold/40 blur-[120px] z-0" />
 
 
       <div className="container mx-auto px-6 relative z-10">
@@ -92,6 +89,8 @@ export function Hero() {
         </motion.div>
       </div>
 
+      {/* bottom fade into page */}
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
     </section>
   );
 }
