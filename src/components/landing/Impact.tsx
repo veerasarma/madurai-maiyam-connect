@@ -34,7 +34,7 @@ export function Impact() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Madurai North · Impact</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
-            Numbers that <span className="text-gradient-gold">move people.</span>
+            Numbers that <span className="text-gradient-red">move people.</span>
           </h2>
         </div>
 

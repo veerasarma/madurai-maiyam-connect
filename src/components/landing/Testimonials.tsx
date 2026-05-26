@@ -39,7 +39,7 @@ export function Testimonials() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="glass rounded-3xl p-8 relative"
             >
-              <div className="absolute -top-4 left-8 font-display text-7xl text-gradient-gold leading-none">"</div>
+              <div className="absolute -top-4 left-8 font-display text-7xl text-gradient-red leading-none">"</div>
               <blockquote className="text-foreground/85 leading-relaxed mb-6 pt-4">
                 {t.q}
               </blockquote>

@@ -13,7 +13,7 @@ export function MobileApp() {
         >
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Visil191 · Mobile</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6">
-            Your ward, in <span className="text-gradient-gold">your pocket.</span>
+            Your ward, in <span className="text-gradient-red">your pocket.</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
             Track complaints, receive ward announcements, and coordinate with local
