@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden">
       {/* Background landmark */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0">
         <img
           src={heroImg}
           alt="Madurai Tamil Sangam temple gopuram at sunset"
@@ -20,8 +20,9 @@ export function Hero() {
       </div>
 
       {/* glowing orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-[120px] -z-10" />
-      <div className="absolute bottom-1/3 -right-32 w-96 h-96 rounded-full bg-gold/40 blur-[120px] -z-10" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-[120px] z-0" />
+      <div className="absolute bottom-1/3 -right-32 w-96 h-96 rounded-full bg-gold/40 blur-[120px] z-0" />
+
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
