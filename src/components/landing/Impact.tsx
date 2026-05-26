@@ -32,9 +32,9 @@ export function Impact() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent -z-10" />
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Madurai North · Impact</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Madurai North · Impact</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
-            Numbers that <span className="text-gradient-gold">move people.</span>
+            Numbers that <span className="text-gradient-red">move people.</span>
           </h2>
         </div>
 
@@ -50,10 +50,10 @@ export function Impact() {
             >
               <div className="absolute inset-0 shimmer opacity-30" />
               <div className="relative">
-                <div className="font-display text-5xl md:text-6xl text-gradient-gold mb-2">
+                <div className="font-display text-5xl md:text-6xl text-gradient-red mb-2">
                   <Counter to={s.n} suffix={s.s} />
                 </div>
-                <div className="text-sm uppercase tracking-wider text-white/70">{s.l}</div>
+                <div className="text-sm uppercase tracking-wider text-muted-foreground">{s.l}</div>
               </div>
             </motion.div>
           ))}

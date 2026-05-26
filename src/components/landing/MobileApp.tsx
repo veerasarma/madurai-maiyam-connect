@@ -11,11 +11,11 @@ export function MobileApp() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Visil191 · Mobile</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Visil191 · Mobile</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6">
-            Your ward, in <span className="text-gradient-gold">your pocket.</span>
+            Your ward, in <span className="text-gradient-red">your pocket.</span>
           </h2>
-          <p className="text-lg text-white/70 leading-relaxed mb-8">
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
             Track complaints, receive ward announcements, and coordinate with local
             volunteers — all from a single Tamil-first mobile experience.
           </p>
@@ -28,7 +28,7 @@ export function MobileApp() {
             ].map((x) => (
               <li key={x} className="flex items-start gap-3">
                 <span className="mt-1 w-5 h-5 rounded-full bg-gradient-gold grid place-items-center text-[10px] text-background font-bold">✓</span>
-                <span className="text-white/80">{x}</span>
+                <span className="text-foreground/80">{x}</span>
               </li>
             ))}
           </ul>

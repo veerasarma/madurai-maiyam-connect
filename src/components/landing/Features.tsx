@@ -21,9 +21,9 @@ export function Features() {
 
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Built for Citizens</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Built for Citizens</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
-            Every tool to <span className="text-gradient-gold">serve faster.</span>
+            Every tool to <span className="text-gradient-red">serve faster.</span>
           </h2>
         </div>
 
@@ -42,7 +42,7 @@ export function Features() {
                 <f.icon className="w-5 h-5 text-white" />
               </div>
               <h3 className="font-display text-lg mb-2">{f.t}</h3>
-              <p className="text-sm text-white/60 leading-relaxed">{f.d}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{f.d}</p>
             </motion.div>
           ))}
         </div>

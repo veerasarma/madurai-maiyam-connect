@@ -13,9 +13,9 @@ export function Workflow() {
     <section id="workflow" className="relative py-32">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mb-20">
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">How It Works</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">How It Works</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
-            From your street to <span className="text-gradient-fire">solved.</span>
+            From your street to <span className="text-gradient-red">solved.</span>
           </h2>
         </div>
 
@@ -34,9 +34,9 @@ export function Workflow() {
                 }`}
               >
                 <div className={`pl-16 md:pl-0 ${i % 2 ? "md:text-left md:pl-16" : "md:text-right md:pr-16"}`}>
-                  <div className="font-display text-6xl text-gradient-gold mb-2">{s.n}</div>
+                  <div className="font-display text-6xl text-gradient-red mb-2">{s.n}</div>
                   <h3 className="font-display text-2xl mb-2">{s.t}</h3>
-                  <p className="text-white/65 max-w-md">{s.d}</p>
+                  <p className="text-muted-foreground max-w-md">{s.d}</p>
                 </div>
                 <div className="absolute left-0 md:left-1/2 top-2 md:-translate-x-1/2">
                   <div className="w-12 h-12 rounded-full bg-gradient-primary grid place-items-center shadow-glow-red ring-4 ring-background">
