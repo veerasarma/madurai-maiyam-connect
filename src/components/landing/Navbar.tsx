@@ -34,12 +34,12 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3">
-          <div className="relative">
-            <div className="w-10 h-10 rounded-xl bg-gradient-primary grid place-items-center font-display text-lg shadow-glow-red">
-              <span className="text-white">V</span>
-            </div>
-          </div>
+        <a href="#" className="flex items-center gap-2">
+          <img
+            src="/ChatGPT_Image_May_26__2026_at_02_39_24_PM-removebg-preview.png"
+            alt="Visil191 Logo"
+            className="w-12 h-12 object-contain drop-shadow-lg"
+          />
           <div className="leading-tight">
             <div className={`font-display text-xl tracking-wide ${logoColor}`}>
               VISIL<span className="text-primary">191</span>
