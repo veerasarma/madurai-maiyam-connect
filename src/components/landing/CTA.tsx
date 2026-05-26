@@ -15,7 +15,7 @@ export function CTA() {
               passing the parcel — just service.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#" className="btn-glow-red px-8 py-4 rounded-full font-semibold">Submit Your Issue</a>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfI0yDlQ2Pb8XalAcq225zEScIYvrUM3GT_byNnrvlE9vJTgQ/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" className="btn-glow-red px-8 py-4 rounded-full font-semibold">Submit Your Issue</a>
               <a href="#" className="btn-glow-gold px-8 py-4 rounded-full font-semibold">Track Status</a>
             </div>
           </div>
