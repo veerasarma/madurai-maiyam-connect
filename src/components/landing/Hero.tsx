@@ -16,7 +16,7 @@ export function Hero() {
         {/* dark wash for legibility */}
         <div className="absolute inset-0 bg-[oklch(0.18_0.08_25/0.55)]" />
         {/* fade to cream at bottom */}
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background via-background/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background to-transparent" />
       </div>
 
       {/* glowing orbs */}
@@ -82,10 +82,10 @@ export function Hero() {
             ].map((s) => (
               <div
                 key={s.l}
-                className="rounded-2xl p-4 bg-white/10 backdrop-blur-md border border-white/20"
+                className="rounded-2xl p-4 bg-black/40 backdrop-blur-md border border-white/20"
               >
                 <div className="font-display text-2xl md:text-3xl text-gold">{s.v}</div>
-                <div className="text-xs uppercase tracking-wider text-white/80 mt-1">{s.l}</div>
+                <div className="text-xs uppercase tracking-wider text-white/90 mt-1">{s.l}</div>
               </div>
             ))}
           </motion.div>
