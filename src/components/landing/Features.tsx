@@ -25,7 +25,7 @@ const leaders = [
   {
     img: anbanImg,
     name: "Vijay Anban Kallanai",
-    role: "Madurai North Ward Rep.",
+    role: "MLA - Madurai North",
     quote: "மக்களின் குரல் — Visil191 மூலம் அரசு வரை",
     badge: "Madurai North",
   },
@@ -69,7 +69,7 @@ export function Features() {
                 img: anbanImg,
                 badge: "Madurai North",
                 name: "Vijay Anban Kallanai",
-                role: "Ward Representative",
+                role: "MLA - Madurai North",
                 quote: "மக்களின் குரல் — Visil191 மூலம் அரசு வரை",
                 delay: 0.15,
               },
