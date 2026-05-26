@@ -52,37 +52,36 @@ export function Features() {
             </h2>
           </div>
 
-          {/* Cards — text overlaid on photo, no separate info panel */}
-          <div className="flex flex-col md:flex-row items-end justify-center gap-6 max-w-5xl mx-auto">
+          {/* Cards */}
+          <div className="flex flex-col md:flex-row items-end justify-center gap-8 max-w-4xl mx-auto">
+
             {/* Card 1 — TVK President */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="group relative w-full md:w-[340px] rounded-3xl overflow-hidden border border-[#C9A84C]/50 shadow-2xl flex-shrink-0"
-              style={{ aspectRatio: "3/4" }}
+              className="group w-full md:w-[320px] flex-shrink-0 rounded-2xl overflow-hidden border border-[#C9A84C]/50 shadow-2xl"
             >
-              <img
-                src={vijayImg}
-                alt="C. Joseph Vijay"
-                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-              />
-              {/* Strong bottom gradient for text legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              {/* Badge */}
-              <div className="absolute top-4 left-4 bg-[#C9A84C] text-[#3B0000] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
-                TVK தலைவர்
+              {/* Photo */}
+              <div className="relative overflow-hidden" style={{ aspectRatio: "4/5" }}>
+                <img
+                  src={vijayImg}
+                  alt="C. Joseph Vijay"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute top-4 left-4 bg-[#C9A84C] text-[#3B0000] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                  TVK தலைவர்
+                </div>
               </div>
-              {/* Overlay text */}
-              <div className="absolute bottom-0 left-0 right-0 px-6 pb-6">
+              {/* Info panel — matches section bg */}
+              <div className="bg-[#6B0000] px-6 py-5 border-t border-[#C9A84C]/30">
                 <h3 className="font-display text-2xl text-white mb-0.5">C. Joseph Vijay</h3>
                 <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">TVK President</div>
-                <p className="text-white/80 text-sm leading-relaxed italic border-l-2 border-[#C9A84C] pl-3">
+                <p className="text-white/75 text-sm leading-relaxed italic border-l-2 border-[#C9A84C] pl-3">
                   "தமிழ்நாட்டின் மாற்றம் தமிழ் மக்களின் கைகளில்"
                 </p>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
             </motion.div>
 
             {/* Card 2 — Ward Rep */}
@@ -91,27 +90,29 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.18 }}
-              className="group relative w-full md:w-[280px] rounded-3xl overflow-hidden border border-[#C9A84C]/40 shadow-2xl flex-shrink-0"
-              style={{ aspectRatio: "3/4" }}
+              className="group w-full md:w-[280px] flex-shrink-0 rounded-2xl overflow-hidden border border-[#C9A84C]/40 shadow-2xl"
             >
-              <img
-                src={anbanImg}
-                alt="Vijay Anban Kallanai"
-                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              <div className="absolute top-4 left-4 bg-[#C9A84C] text-[#3B0000] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
-                Madurai North
+              {/* Photo */}
+              <div className="relative overflow-hidden" style={{ aspectRatio: "4/5" }}>
+                <img
+                  src={anbanImg}
+                  alt="Vijay Anban Kallanai"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute top-4 left-4 bg-[#C9A84C] text-[#3B0000] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                  Madurai North
+                </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 px-5 pb-6">
+              {/* Info panel */}
+              <div className="bg-[#6B0000] px-5 py-5 border-t border-[#C9A84C]/30">
                 <h3 className="font-display text-xl text-white mb-0.5">Vijay Anban Kallanai</h3>
                 <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Ward Representative</div>
-                <p className="text-white/80 text-sm leading-relaxed italic border-l-2 border-[#C9A84C] pl-3">
+                <p className="text-white/75 text-sm leading-relaxed italic border-l-2 border-[#C9A84C] pl-3">
                   "மக்களின் குரல் — Visil191 மூலம் அரசு வரை"
                 </p>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
             </motion.div>
+
           </div>
 
           {/* View More — centered below */}
