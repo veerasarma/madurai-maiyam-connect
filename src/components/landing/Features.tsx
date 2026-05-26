@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { FileText, Activity, Users, MapPin, Siren, Megaphone, Network, ChartBar as BarChart3 } from "lucide-react";
 import vijayImg from "@/assets/IMG_8433.JPG.jpeg";
-import anbanImg from "@/assets/1000066596.jpg.jpeg";
+import anbanImg from "@/assets/1000066594.jpg.jpeg";
 
 const features = [
   { icon: FileText, t: "Complaint Registration", d: "One-tap submission with photo, location & category." },
@@ -35,10 +35,12 @@ export function Features() {
   return (
     <>
       {/* Leadership Photo Cards Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: "#7A0000" }}>
-        {/* Subtle texture */}
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-10" />
-
+  <section className="relative py-24 overflow-hidden bg-[#7A0000]">
+  {/* Background image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: "url('/bakimage.jpeg')" }}
+  />
         {/* Gold top border */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
 
