@@ -29,7 +29,7 @@ export function About() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mb-20"
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">About Visil191</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">About Visil191</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6">
             A new chapter for <span className="text-gradient-red">Madurai North.</span>
           </h2>

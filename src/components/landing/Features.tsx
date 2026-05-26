@@ -21,7 +21,7 @@ export function Features() {
 
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Built for Citizens</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Built for Citizens</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
             Every tool to <span className="text-gradient-gold">serve faster.</span>
           </h2>

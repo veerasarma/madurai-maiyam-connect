@@ -6,7 +6,7 @@ export function CTA() {
           <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary/40 blur-[100px]" />
           <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-gold/40 blur-[100px]" />
           <div className="relative">
-            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Your Voice Matters</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Your Voice Matters</div>
             <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6 max-w-3xl mx-auto">
               Have an issue in your ward? <span className="text-gradient-red">Tell us now.</span>
             </h2>

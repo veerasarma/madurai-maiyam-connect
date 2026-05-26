@@ -11,7 +11,7 @@ export function MobileApp() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Visil191 · Mobile</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Visil191 · Mobile</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6">
             Your ward, in <span className="text-gradient-gold">your pocket.</span>
           </h2>

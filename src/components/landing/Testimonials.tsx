@@ -23,7 +23,7 @@ export function Testimonials() {
     <section className="relative py-32">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Voices from the Ground</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Voices from the Ground</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
             Real stories from <span className="text-gradient-red">real Madurai.</span>
           </h2>

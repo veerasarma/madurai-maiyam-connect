@@ -14,7 +14,7 @@ export function Team() {
     <section id="team" className="relative py-32">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mb-20">
-          <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Leadership</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Leadership</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
             Coordinators on the <span className="text-gradient-red">ground.</span>
           </h2>
