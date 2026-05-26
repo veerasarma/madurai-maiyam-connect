@@ -108,7 +108,13 @@
     color: transparent;
   }
   .text-gradient-fire {
-    background: linear-gradient(135deg, oklch(0.88 0.15 90), oklch(0.58 0.22 25));
+    background: linear-gradient(135deg, oklch(0.74 0.18 75), oklch(0.48 0.21 25));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-red {
+    background: linear-gradient(135deg, oklch(0.52 0.22 25), oklch(0.38 0.18 25));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
