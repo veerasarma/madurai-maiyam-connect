@@ -42,7 +42,7 @@ export function Features() {
                 <f.icon className="w-5 h-5 text-white" />
               </div>
               <h3 className="font-display text-lg mb-2">{f.t}</h3>
-              <p className="text-sm text-white/60 leading-relaxed">{f.d}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{f.d}</p>
             </motion.div>
           ))}
         </div>

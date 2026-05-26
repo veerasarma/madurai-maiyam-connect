@@ -31,9 +31,9 @@ export function About() {
         >
           <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">About Visil191</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6">
-            A new chapter for <span className="text-gradient-fire">Madurai North.</span>
+            A new chapter for <span className="text-gradient-red">Madurai North.</span>
           </h2>
-          <p className="text-lg text-white/70 leading-relaxed">
+          <p className="text-lg text-muted-foreground leading-relaxed">
             Visil191 is TVK Madurai North's digital backbone — a platform built so every
             voice from every street reaches the right hands, instantly. No middlemen. No
             delays. Just <span className="text-gold">service, tracked.</span>
@@ -56,7 +56,7 @@ export function About() {
                   {p.i}
                 </div>
                 <h3 className="font-display text-2xl mb-3">{p.t}</h3>
-                <p className="text-white/65 leading-relaxed">{p.d}</p>
+                <p className="text-muted-foreground leading-relaxed">{p.d}</p>
               </div>
             </motion.div>
           ))}

@@ -53,7 +53,7 @@ export function Impact() {
                 <div className="font-display text-5xl md:text-6xl text-gradient-gold mb-2">
                   <Counter to={s.n} suffix={s.s} />
                 </div>
-                <div className="text-sm uppercase tracking-wider text-white/70">{s.l}</div>
+                <div className="text-sm uppercase tracking-wider text-muted-foreground">{s.l}</div>
               </div>
             </motion.div>
           ))}

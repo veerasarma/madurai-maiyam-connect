@@ -8,9 +8,9 @@ export function CTA() {
           <div className="relative">
             <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Your Voice Matters</div>
             <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6 max-w-3xl mx-auto">
-              Have an issue in your ward? <span className="text-gradient-fire">Tell us now.</span>
+              Have an issue in your ward? <span className="text-gradient-red">Tell us now.</span>
             </h2>
-            <p className="text-lg text-white/75 max-w-2xl mx-auto mb-10">
+            <p className="text-lg text-foreground/75 max-w-2xl mx-auto mb-10">
               Every submission is logged, routed and tracked until it's solved. No
               passing the parcel — just service.
             </p>

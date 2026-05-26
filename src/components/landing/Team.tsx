@@ -16,7 +16,7 @@ export function Team() {
         <div className="max-w-3xl mb-20">
           <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Leadership</div>
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
-            Coordinators on the <span className="text-gradient-fire">ground.</span>
+            Coordinators on the <span className="text-gradient-red">ground.</span>
           </h2>
         </div>
 
@@ -39,7 +39,7 @@ export function Team() {
               <div>
                 <h3 className="font-display text-lg">{m.n}</h3>
                 <div className="text-sm text-gold">{m.r}</div>
-                <div className="text-xs text-white/50 mt-1">{m.w}</div>
+                <div className="text-xs text-muted-foreground/80 mt-1">{m.w}</div>
               </div>
             </motion.div>
           ))}
