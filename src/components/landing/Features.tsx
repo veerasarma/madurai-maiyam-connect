@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { FileText, Activity, Users, MapPin, Siren, Megaphone, Network, ChartBar as BarChart3 } from "lucide-react";
 import vijayImg from "@/assets/IMG_8433.JPG.jpeg";
-import anbanImg from "@/assets/1000066594.jpg.jpeg";
+import anbanImg from "@/assets/1000066596.jpg.jpeg";
 
 const features = [
   { icon: FileText, t: "Complaint Registration", d: "One-tap submission with photo, location & category." },
