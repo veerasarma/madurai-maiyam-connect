@@ -44,62 +44,89 @@ export function Features() {
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
 
         <div className="relative container mx-auto px-6">
-          <div className="flex items-start justify-between mb-12 flex-wrap gap-4">
-            <div>
-              <div className="text-xs uppercase tracking-[0.3em] text-[#C9A84C] mb-3">Our Leadership</div>
-              <h2 className="font-display text-4xl md:text-5xl text-white leading-tight">
-                Voices of <span className="text-[#C9A84C]">Madurai North</span>
-              </h2>
-            </div>
+          {/* Header — centered */}
+          <div className="text-center mb-14">
+            <div className="text-xs uppercase tracking-[0.3em] text-[#C9A84C] mb-3">Our Leadership</div>
+            <h2 className="font-display text-4xl md:text-5xl text-white leading-tight">
+              Voices of <span className="text-[#C9A84C]">Madurai North</span>
+            </h2>
+          </div>
+
+          {/* Cards — Vijay larger on left, Anban on right aligned to bottom */}
+          <div className="flex flex-col md:flex-row items-end justify-center gap-6 max-w-5xl mx-auto">
+            {/* Card 1 — TVK President (taller) */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="group relative w-full md:w-[340px] rounded-3xl overflow-hidden border border-[#C9A84C]/50 shadow-2xl flex-shrink-0"
+              style={{ background: "rgba(40,0,0,0.6)", backdropFilter: "blur(14px)" }}
+            >
+              <div className="relative" style={{ aspectRatio: "3/4" }}>
+                <img
+                  src={vijayImg}
+                  alt="C. Joseph Vijay"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2A0000] via-[#2A0000]/30 to-transparent" />
+                <div className="absolute top-4 left-4 bg-[#C9A84C] text-[#3B0000] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                  TVK தலைவர்
+                </div>
+              </div>
+              <div className="px-6 py-5">
+                <h3 className="font-display text-2xl text-white mb-0.5">C. Joseph Vijay</h3>
+                <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">TVK President</div>
+                <p className="text-white/65 text-sm leading-relaxed italic border-l-2 border-[#C9A84C]/50 pl-3">
+                  "தமிழ்நாட்டின் மாற்றம் தமிழ் மக்களின் கைகளில்"
+                </p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+            </motion.div>
+
+            {/* Card 2 — Ward Rep (shorter) */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.18 }}
+              className="group relative w-full md:w-[280px] rounded-3xl overflow-hidden border border-[#C9A84C]/40 shadow-2xl flex-shrink-0"
+              style={{ background: "rgba(40,0,0,0.6)", backdropFilter: "blur(14px)" }}
+            >
+              <div className="relative" style={{ aspectRatio: "3/4" }}>
+                <img
+                  src={anbanImg}
+                  alt="Vijay Anban Kallanai"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2A0000] via-[#2A0000]/30 to-transparent" />
+                <div className="absolute top-4 left-4 bg-[#C9A84C] text-[#3B0000] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                  Madurai North
+                </div>
+              </div>
+              <div className="px-5 py-5">
+                <h3 className="font-display text-xl text-white mb-0.5">Vijay Anban Kallanai</h3>
+                <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">Ward Representative</div>
+                <p className="text-white/65 text-sm leading-relaxed italic border-l-2 border-[#C9A84C]/50 pl-3">
+                  "மக்களின் குரல் — Visil191 மூலம் அரசு வரை"
+                </p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
+            </motion.div>
+          </div>
+
+          {/* View More — centered below */}
+          <div className="flex justify-center mt-10">
             <motion.a
               href="#team"
               whileHover={{ scale: 1.04 }}
-              className="flex items-center gap-2 bg-[#C9A84C] text-[#3B0000] font-bold px-5 py-2.5 rounded-full text-sm shadow-lg hover:bg-yellow-400 transition-colors"
+              className="flex items-center gap-2 bg-[#C9A84C] text-[#3B0000] font-bold px-6 py-2.5 rounded-full text-sm shadow-lg hover:bg-yellow-400 transition-colors"
             >
               View More
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </motion.a>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {leaders.map((l, i) => (
-              <motion.div
-                key={l.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.15 }}
-                className="group relative rounded-2xl overflow-hidden border border-[#C9A84C]/40 shadow-2xl"
-                style={{ background: "rgba(60,0,0,0.55)", backdropFilter: "blur(12px)" }}
-              >
-                {/* Photo */}
-                <div className="relative h-80 overflow-hidden">
-                  <img
-                    src={l.img}
-                    alt={l.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#3B0000]/90 via-[#3B0000]/20 to-transparent" />
-
-                  {/* Badge */}
-                  <div className="absolute top-4 left-4 bg-[#C9A84C] text-[#3B0000] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
-                    {l.badge}
-                  </div>
-                </div>
-
-                {/* Info */}
-                <div className="p-6">
-                  <h3 className="font-display text-2xl text-white mb-1">{l.name}</h3>
-                  <div className="text-[#C9A84C] text-sm font-semibold mb-3 uppercase tracking-wide">{l.role}</div>
-                  <p className="text-white/70 text-sm leading-relaxed italic">"{l.quote}"</p>
-                </div>
-
-                {/* Gold bottom accent */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
-              </motion.div>
-            ))}
           </div>
         </div>
 
