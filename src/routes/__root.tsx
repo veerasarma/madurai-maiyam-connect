@@ -82,6 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@MaduraiConnect" },
       { name: "twitter:title", content: "Madurai Connect" },
       { name: "twitter:description", content: "Madurai Connect is a web application for political support and grievance management." },
+      { property: "og:image", content: "https://images.pexels.com/photos/1549280/pexels-photo-1549280.jpeg?auto=compress&cs=tinysrgb&w=1200" },
+      { name: "twitter:image", content: "https://images.pexels.com/photos/1549280/pexels-photo-1549280.jpeg?auto=compress&cs=tinysrgb&w=1200" },
     ],
     links: [
       {
