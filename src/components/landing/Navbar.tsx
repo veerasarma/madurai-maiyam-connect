@@ -13,6 +13,8 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const textColor = scrolled ? "text-foreground/75" : "text-white/90";
+  const logoColor = scrolled ? "text-foreground" : "text-white";
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 20);
     on();
@@ -28,7 +30,7 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "glass border-b border-foreground/5 py-3"
-          : "py-5 bg-background/40 backdrop-blur-sm"
+          : "py-5 bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -39,10 +41,10 @@ export function Navbar() {
             </div>
           </div>
           <div className="leading-tight">
-            <div className="font-display text-xl tracking-wide text-foreground">
+            <div className={`font-display text-xl tracking-wide ${logoColor}`}>
               VISIL<span className="text-primary">191</span>
             </div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            <div className={`text-[10px] uppercase tracking-[0.2em] ${scrolled ? "text-muted-foreground" : "text-white/60"}`}>
               TVK · Madurai North
             </div>
           </div>
@@ -53,7 +55,7 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-foreground/75 hover:text-primary transition relative group font-medium"
+              className={`text-sm ${textColor} hover:text-primary transition relative group font-medium`}
             >
               {l.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
@@ -62,7 +64,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="#track" className="btn-ghost-light px-4 py-2 rounded-full text-sm font-medium">
+          <a href="#track" className={`px-4 py-2 rounded-full text-sm font-medium border transition ${scrolled ? "btn-ghost-light" : "border-white/40 text-white hover:bg-white/10"}`}>
             Track Status
           </a>
           <a href="#submit" className="btn-glow-red px-5 py-2.5 rounded-full text-sm font-semibold">
