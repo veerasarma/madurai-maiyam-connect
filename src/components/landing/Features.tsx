@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { FileText, Activity, Users, MapPin, Siren, Megaphone, Network, ChartBar as BarChart3 } from "lucide-react";
 import vijayImg from "@/assets/IMG_8433.JPG.jpeg";
+import anandImg from "@/assets/n-anand-general-secretary.png";
 import anbanImg from "@/assets/1000066596.jpg.jpeg";
 
 const features = [
@@ -21,6 +22,15 @@ const leaders = [
     role: "TVK President",
     quote: "தமிழ்நாட்டின் மாற்றம் தமிழ் மக்களின் கைகளில்",
     badge: "TVK தலைவர்",
+    delay: 0,
+  },
+  {
+    img: anandImg,
+    name: "N. Anand",
+    role: "TVK General Secretary & Minister",
+    quote: "ஊரக வளர்ச்சியும் மக்கள் நலனும் நம் முன்னுரிமை",
+    badge: "TVK பொதுச் செயலாளர்",
+    delay: 0.1,
   },
   {
     img: anbanImg,
@@ -28,6 +38,7 @@ const leaders = [
     role: "MLA - Madurai North",
     quote: "மக்களின் குரல் — Visil191 மூலம் அரசு வரை",
     badge: "Madurai North",
+    delay: 0.2,
   },
 ];
 
@@ -57,35 +68,18 @@ export function Features() {
           </div>
 
           {/* Cards — equal width, equal photo height, equal info height */}
-          <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 max-w-3xl mx-auto">
-            {[
-              {
-                img: vijayImg,
-                badge: "TVK தலைவர்",
-                name: "C. Joseph Vijay",
-                role: "TVK President",
-                quote: "தமிழ்நாட்டின் மாற்றம் தமிழ் மக்களின் கைகளில்",
-                delay: 0,
-              },
-              {
-                img: anbanImg,
-                badge: "Madurai North",
-                name: "Vijay Anban Kallanai",
-                role: "MLA - Madurai North",
-                quote: "மக்களின் குரல் — Visil191 மூலம் அரசு வரை",
-                delay: 0.15,
-              },
-            ].map((l) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {leaders.map((l) => (
               <motion.div
                 key={l.name}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, delay: l.delay }}
-                className="group flex-1 min-w-0 rounded-2xl overflow-hidden border border-[#C9A84C]/50 shadow-2xl flex flex-col"
+                className="group min-w-0 rounded-2xl overflow-hidden border border-[#C9A84C]/50 shadow-2xl flex flex-col"
               >
                 {/* Fixed-height photo */}
-                <div className="relative overflow-hidden h-[400px]">
+                <div className="relative overflow-hidden h-[380px] md:h-[360px]">
                   <img
                     src={l.img}
                     alt={l.name}
@@ -95,8 +89,8 @@ export function Features() {
                     {l.badge}
                   </div>
                 </div>
-                {/* Info panel — fixed height so both cards match */}
-                <div className="h-[140px] px-6 py-5 border-t-2 border-[#C9A84C]/40" style={{ background: "#5A0000" }}>
+                {/* Info panel — consistent height across cards */}
+                <div className="min-h-[150px] flex-1 px-6 py-5 border-t-2 border-[#C9A84C]/40" style={{ background: "#5A0000" }}>
                   <h3 className="font-display text-xl text-white mb-1">{l.name}</h3>
                   <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-3">{l.role}</div>
                   <p className="text-white text-sm leading-relaxed italic border-l-2 border-[#C9A84C] pl-3 opacity-90">
