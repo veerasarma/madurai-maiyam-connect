@@ -1,7 +1,12 @@
 import { motion } from "motion/react";
 import mockup from "@/assets/mobile-mockup.png";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function MobileApp() {
+  const { content, locale } = useLanguage();
+  const { digitalAccess } = content;
+  const isTamil = locale === "ta";
+
   return (
     <section className="relative py-32 overflow-hidden">
       <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
@@ -11,30 +16,24 @@ export function MobileApp() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Visil191 · Mobile</div>
-          <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6">
-            Your ward, in <span className="text-gradient-red">your pocket.</span>
+          <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">{digitalAccess.tag}</div>
+          <h2 className={`font-display text-4xl md:text-6xl leading-tight mb-6 ${isTamil ? "font-tamil font-normal" : ""}`}>
+            {digitalAccess.title}
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            Track complaints, receive ward announcements, and coordinate with local
-            volunteers — all from a single Tamil-first mobile experience.
+          <p className={`text-lg text-muted-foreground leading-relaxed mb-8 ${isTamil ? "font-tamil" : ""}`}>
+            {digitalAccess.body}
           </p>
           <ul className="space-y-4 mb-10">
-            {[
-              "Live complaint tracking with push alerts",
-              "Volunteer task board & shift coordination",
-              "One-tap emergency support",
-              "Tamil-first interface, made for Madurai",
-            ].map((x) => (
+            {digitalAccess.bullets.map((x) => (
               <li key={x} className="flex items-start gap-3">
                 <span className="mt-1 w-5 h-5 rounded-full bg-gradient-gold grid place-items-center text-[10px] text-background font-bold">✓</span>
-                <span className="text-foreground/80">{x}</span>
+                <span className={`text-foreground/80 ${isTamil ? "font-tamil" : ""}`}>{x}</span>
               </li>
             ))}
           </ul>
           <div className="flex flex-wrap gap-3">
-            <a className="btn-glow-red px-6 py-3.5 rounded-full font-semibold" href="#">Get on Android</a>
-            <a className="btn-ghost-light px-6 py-3.5 rounded-full font-semibold" href="#">Get on iOS</a>
+            <a className={`btn-glow-red px-6 py-3.5 rounded-full font-semibold ${isTamil ? "font-tamil" : ""}`} href="#submit">{digitalAccess.ctaAndroid}</a>
+            <a className={`btn-ghost-light px-6 py-3.5 rounded-full font-semibold ${isTamil ? "font-tamil" : ""}`} href="#track">{digitalAccess.ctaIos}</a>
           </div>
         </motion.div>
 

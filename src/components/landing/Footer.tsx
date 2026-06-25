@@ -1,6 +1,11 @@
 import { Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function Footer() {
+  const { content, locale } = useLanguage();
+  const { brand, footer } = content;
+  const isTamil = locale === "ta";
+
   return (
     <footer
       id="contact"
@@ -21,14 +26,13 @@ export function Footer() {
                 <div className="font-display text-2xl tracking-wide">
                   VISIL<span className="text-gradient-gold">191</span>
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-white/60">
-                  TVK · Madurai North
+                <div className={`text-[10px] uppercase tracking-[0.15em] text-white/60 ${isTamil ? "font-tamil normal-case" : ""}`}>
+                  {brand.expanded}
                 </div>
               </div>
             </div>
-            <p className="text-white/75 max-w-md leading-relaxed mb-6">
-              A people-first digital movement by TVK Madurai North — built to make
-              governance responsive, transparent and worthy of Tamil Nadu's future.
+            <p className={`text-white/75 max-w-md leading-relaxed mb-6 ${isTamil ? "font-tamil" : ""}`}>
+              {footer.description}
             </p>
             <div className="flex gap-3">
               {[Facebook, Instagram, Twitter, Youtube].map((Ic, i) => (
@@ -45,13 +49,13 @@ export function Footer() {
 
           <div>
             <h4 className="font-display text-sm uppercase tracking-[0.2em] text-gold mb-5">
-              Quick Links
+              {footer.quickLinksTitle}
             </h4>
             <ul className="space-y-3 text-white/75 text-sm">
-              {["About Visil191", "Features", "Workflow", "Impact", "Team", "Volunteer"].map((l) => (
-                <li key={l}>
-                  <a href="#" className="hover:text-gold transition">
-                    {l}
+              {footer.quickLinks.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className={`hover:text-gold transition ${isTamil ? "font-tamil" : ""}`}>
+                    {l.label}
                   </a>
                 </li>
               ))}
@@ -59,29 +63,45 @@ export function Footer() {
           </div>
 
           <div>
+            <h4 className={`font-display text-sm uppercase tracking-[0.2em] text-gold mb-5 ${isTamil ? "font-tamil normal-case" : ""}`}>
+              {footer.serviceLinksTitle}
+            </h4>
+            <ul className="space-y-3 text-white/75 text-sm mb-8">
+              {footer.serviceLinks.map((l) => (
+                <li key={l}>
+                  <a href="#features" className={`hover:text-gold transition ${isTamil ? "font-tamil" : ""}`}>
+                    {l}
+                  </a>
+                </li>
+              ))}
+            </ul>
             <h4 className="font-display text-sm uppercase tracking-[0.2em] text-gold mb-5">
-              Reach Us
+              {footer.reachUsTitle}
             </h4>
             <ul className="space-y-4 text-white/75 text-sm">
               <li className="flex gap-3">
                 <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                TVK Madurai North Office, Anna Nagar Main Road, Madurai 625020
+                {footer.address}
               </li>
               <li className="flex gap-3">
                 <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                +91 452 191 1919
+                {footer.phone}
               </li>
               <li className="flex gap-3">
                 <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                contact@visil191.in
+                {footer.emailSupport}
+              </li>
+              <li className="flex gap-3">
+                <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" />
+                {footer.emailGrievance}
               </li>
             </ul>
           </div>
         </div>
 
         <div className="pt-8 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
-          <div>© {new Date().getFullYear()} Visil191 · TVK Madurai North. All rights reserved.</div>
-          <div className="font-tamil text-gold">மக்கள் சேவையே மகேசன் சேவை</div>
+          <div className={isTamil ? "font-tamil" : ""}>{footer.copyright}</div>
+          <div className={`text-gold ${isTamil ? "font-tamil" : ""}`}>{footer.tagline}</div>
         </div>
       </div>
     </footer>

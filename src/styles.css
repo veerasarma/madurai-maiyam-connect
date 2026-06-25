@@ -141,6 +141,31 @@
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
   .font-display { font-family: "Anton", "Inter", sans-serif; }
   .font-tamil { font-family: "Noto Sans Tamil", sans-serif; }
+  .font-tamil-ui {
+    font-family: "Noto Sans Tamil", sans-serif;
+    line-height: 1.35;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+  }
+  .nav-tamil-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    line-height: 1.15;
+    padding-block: 0.125rem;
+  }
+
+  .gap-1\.5 {
+    gap: calc(var(--spacing) * 2.5);
+  }
+
+  /* Tamil: keep Track/Submit in mobile drawer only (below xl) */
+  @media (max-width: 1279px) {
+    .nav-tamil-header-cta {
+      display: none !important;
+    }
+  }
 
   .btn-glow-red {
     background: linear-gradient(135deg, oklch(0.52 0.22 25), oklch(0.42 0.20 25));
