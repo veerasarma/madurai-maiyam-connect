@@ -156,17 +156,6 @@
     padding-block: 0.125rem;
   }
 
-  .gap-1\.5 {
-    gap: calc(var(--spacing) * 2.5);
-  }
-
-  /* Tamil: keep Track/Submit in mobile drawer only (below xl) */
-  @media (max-width: 1279px) {
-    .nav-tamil-header-cta {
-      display: none !important;
-    }
-  }
-
   .btn-glow-red {
     background: linear-gradient(135deg, oklch(0.52 0.22 25), oklch(0.42 0.20 25));
     color: white;
@@ -228,4 +217,23 @@
     background-size: 200% 100%;
     animation: shimmer 3s linear infinite;
   }
+}
+
+/*
+ * Tamil sections (About and below) read slightly large because Noto Sans
+ * Tamil has a tall x-height. Trim ~12% only for elements that carry the
+ * .font-tamil class. The rules are intentionally unlayered so they win over
+ * Tailwind's utility layer. This never affects English (the class is only
+ * applied in Tamil mode), the hero, or the navbar (those use .font-tamil-ui).
+ */
+.font-tamil.text-4xl { font-size: 2rem; }
+.font-tamil.text-2xl { font-size: 1.3rem; }
+.font-tamil.text-xl { font-size: 1.1rem; }
+.font-tamil.text-lg { font-size: 1rem; }
+.font-tamil.text-sm { font-size: 0.8rem; }
+.font-tamil.text-xs { font-size: 0.7rem; }
+
+@media (min-width: 768px) {
+  .font-tamil.md\:text-5xl { font-size: 2.6rem; }
+  .font-tamil.md\:text-6xl { font-size: 3.15rem; }
 }

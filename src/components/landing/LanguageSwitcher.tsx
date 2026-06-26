@@ -4,14 +4,9 @@ import type { Locale } from "@/content/landing";
 type LanguageSwitcherProps = {
   scrolled?: boolean;
   compact?: boolean;
-  isTamil?: boolean;
 };
 
-export function LanguageSwitcher({
-  scrolled = false,
-  compact = false,
-  isTamil = false,
-}: LanguageSwitcherProps) {
+export function LanguageSwitcher({ scrolled = false, compact = false }: LanguageSwitcherProps) {
   const { locale, setLocale, content } = useLanguage();
 
   const options: { value: Locale; label: string }[] = [
@@ -37,8 +32,6 @@ export function LanguageSwitcher({
             type="button"
             onClick={() => setLocale(opt.value)}
             className={`rounded-full font-medium transition-all ${
-              isTamil ? "font-tamil-ui" : ""
-            } ${
               compact ? "px-2 py-1 text-[10px]" : "px-2.5 py-1 text-[11px] sm:text-xs"
             } ${
               active
