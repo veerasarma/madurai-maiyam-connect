@@ -190,7 +190,7 @@ export const en: LandingContent = {
     ],
     reachUsTitle: "Reach Us",
     address: "Visil191 Control Room / Constituency Support Office, Madurai North, Madurai",
-    phone: "+91 XXXXX XXXXX",
+    phone: "+91 9500355775",
     emailSupport: "support@visil191.com",
     emailGrievance: "grievance@visil191.com",
     copyright: "© 2026 VISIL191 – Madurai North MLA Grievance Control System. All rights reserved.",
