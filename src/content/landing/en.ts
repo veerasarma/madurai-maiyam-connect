@@ -15,7 +15,7 @@ export const en: LandingContent = {
       { label: "Services", href: "#features" },
       { label: "Workflow", href: "#workflow" },
       { label: "Monitoring", href: "#impact" },
-      { label: "Volunteers", href: "#team" },
+      { label: "Volunteers", href: "/volunteer" },
       { label: "Contact", href: "#contact" },
     ],
     submit: "Submit Grievance",
@@ -129,6 +129,8 @@ export const en: LandingContent = {
       { n: "Grievance Desk", r: "Grievance Desk", w: "Petition registration, department routing, follow-up" },
       { n: "Digital Access", r: "Digital Access", w: "Mobile / WhatsApp registration and tracking" },
     ],
+    applyCta: "Apply / open volunteer access",
+    applyUrl: "/volunteer",
   },
   digitalAccess: {
     tag: "Digital Access",
@@ -163,8 +165,9 @@ export const en: LandingContent = {
     submit: "Submit Your Grievance",
     track: "Track Complaint Status",
     volunteer: "Join as Volunteer",
-    submitUrl:
-      "https://docs.google.com/forms/d/e/1FAIpQLSfI0yDlQ2Pb8XalAcq225zEScIYvrUM3GT_byNnrvlE9vJTgQ/viewform?usp=publish-editor",
+    submitUrl: "/submit",
+    trackUrl: "/track",
+    volunteerUrl: "/volunteer",
   },
   footer: {
     description:
@@ -173,10 +176,10 @@ export const en: LandingContent = {
     quickLinks: [
       { label: "Home", href: "#" },
       { label: "About Visil191", href: "#about" },
-      { label: "Submit Grievance", href: "#submit" },
-      { label: "Track Status", href: "#track" },
+      { label: "Submit Grievance", href: "/submit" },
+      { label: "Track Status", href: "/track" },
       { label: "Service Categories", href: "#features" },
-      { label: "Volunteer Registration", href: "#team" },
+      { label: "Volunteer Registration", href: "/volunteer" },
       { label: "Contact", href: "#contact" },
     ],
     serviceLinksTitle: "Service Categories",

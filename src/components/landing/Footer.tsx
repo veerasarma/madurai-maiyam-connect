@@ -15,8 +15,8 @@ export function Footer() {
           "linear-gradient(180deg, oklch(0.32 0.16 25) 0%, oklch(0.22 0.12 25) 100%)",
       }}
     >
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-gradient-gold grid place-items-center font-display text-xl shadow-glow-gold text-[oklch(0.22_0.12_25)]">

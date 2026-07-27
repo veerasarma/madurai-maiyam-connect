@@ -7,17 +7,25 @@ export function Team() {
   const isTamil = locale === "ta";
 
   return (
-    <section id="team" className="relative py-32">
-      <div className="container mx-auto px-6">
-        <div className="max-w-3xl mb-20">
+    <section id="team" className="relative py-20 sm:py-32">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mb-12 sm:mb-20">
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">{volunteer.tag}</div>
-          <h2 className={`font-display text-4xl md:text-6xl leading-tight mb-6 ${isTamil ? "font-tamil font-normal" : ""}`}>
+          <h2 className={`font-display text-3xl sm:text-4xl md:text-6xl leading-tight mb-6 ${isTamil ? "font-tamil font-normal" : ""}`}>
             {volunteer.title}
           </h2>
-          <p className={`text-lg text-muted-foreground leading-relaxed ${isTamil ? "font-tamil" : ""}`}>{volunteer.body}</p>
+          <p className={`text-base sm:text-lg text-muted-foreground leading-relaxed ${isTamil ? "font-tamil" : ""}`}>{volunteer.body}</p>
+          <div className="mt-8">
+            <a
+              href={volunteer.applyUrl}
+              className={`inline-flex btn-glow-gold px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-semibold w-full sm:w-auto justify-center ${isTamil ? "font-tamil" : ""}`}
+            >
+              {volunteer.applyCta}
+            </a>
+          </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {volunteer.roles.map((m, i) => (
             <motion.div
               key={m.n}

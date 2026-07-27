@@ -15,7 +15,7 @@ export const ta: LandingContent = {
       { label: "சேவைகள்", shortLabel: "சேவை", href: "#features" },
       { label: "எப்படி செயல்படுகிறது", shortLabel: "செயல்முறை", href: "#workflow" },
       { label: "கண்காணிப்பு", shortLabel: "கண்காணிப்பு", href: "#impact" },
-      { label: "தன்னார்வலர்கள்", shortLabel: "தன்னார்வலர்", href: "#team" },
+      { label: "தன்னார்வலர்கள்", shortLabel: "தன்னார்வலர்", href: "/volunteer" },
       { label: "தொடர்புக்கு", shortLabel: "தொடர்பு", href: "#contact" },
     ],
     submit: "குறையை பதிவு செய்யுங்கள்",
@@ -129,6 +129,8 @@ export const ta: LandingContent = {
       { n: "Grievance Desk", r: "குறைதீர் மையம்", w: "மனு பதிவு, துறை ஒதுக்கல், பின்தொடர்பு" },
       { n: "Digital Access", r: "டிஜிட்டல் அணுகல்", w: "மொபைல் / WhatsApp வழி மனு பதிவு & கண்காணிப்பு" },
     ],
+    applyCta: "விண்ணப்பி / தன்னார்வலர் அணுகல்",
+    applyUrl: "/volunteer",
   },
   digitalAccess: {
     tag: "டிஜிட்டல் அணுகல்",
@@ -163,8 +165,9 @@ export const ta: LandingContent = {
     submit: "குறையை பதிவு செய்யுங்கள்",
     track: "மனு நிலையை பார்க்கவும்",
     volunteer: "தன்னார்வலராக இணையுங்கள்",
-    submitUrl:
-      "https://docs.google.com/forms/d/e/1FAIpQLSfI0yDlQ2Pb8XalAcq225zEScIYvrUM3GT_byNnrvlE9vJTgQ/viewform?usp=publish-editor",
+    submitUrl: "/submit",
+    trackUrl: "/track",
+    volunteerUrl: "/volunteer",
   },
   footer: {
     description:
@@ -173,10 +176,10 @@ export const ta: LandingContent = {
     quickLinks: [
       { label: "முகப்பு", href: "#" },
       { label: "Visil191 பற்றி", href: "#about" },
-      { label: "குறையை பதிவு செய்ய", href: "#submit" },
-      { label: "மனு நிலையை பார்க்க", href: "#track" },
+      { label: "குறையை பதிவு செய்ய", href: "/submit" },
+      { label: "மனு நிலையை பார்க்க", href: "/track" },
       { label: "சேவை பிரிவுகள்", href: "#features" },
-      { label: "தன்னார்வலர் பதிவு", href: "#team" },
+      { label: "தன்னார்வலர் பதிவு", href: "/volunteer" },
       { label: "தொடர்புக்கு", href: "#contact" },
     ],
     serviceLinksTitle: "சேவை பிரிவுகள்",

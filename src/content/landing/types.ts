@@ -70,6 +70,8 @@ export type LandingContent = {
     title: string;
     body: string;
     roles: { n: string; r: string; w: string }[];
+    applyCta: string;
+    applyUrl: string;
   };
   digitalAccess: {
     tag: string;
@@ -94,6 +96,8 @@ export type LandingContent = {
     track: string;
     volunteer: string;
     submitUrl: string;
+    trackUrl: string;
+    volunteerUrl: string;
   };
   footer: {
     description: string;

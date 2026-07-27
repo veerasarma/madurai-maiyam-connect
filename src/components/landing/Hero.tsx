@@ -8,7 +8,7 @@ export function Hero() {
   const isTamil = locale === "ta";
 
   return (
-    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden">
+    <section className="relative min-h-[100svh] pt-28 sm:pt-32 pb-16 sm:pb-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
           src={heroImg}
@@ -21,7 +21,7 @@ export function Hero() {
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/40 to-transparent" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
             <span className="block">{hero.titleLine1}</span>
             <span
               className={`block text-gradient-gold mt-4 text-balance mx-auto max-w-4xl ${
@@ -56,28 +56,34 @@ export function Hero() {
             {hero.processStrip}
           </p>
 
-          <div className={`flex flex-wrap justify-center gap-3 sm:gap-4 mb-16 ${isTamil ? "max-w-3xl mx-auto" : ""}`}>
+          <div className={`flex flex-wrap justify-center gap-3 sm:gap-4 mb-16 ${isTamil ? "max-w-3xl mx-auto" : "max-w-xl sm:max-w-3xl mx-auto"}`}>
             <a
-              href="#submit"
+              href="/submit"
               className={`btn-glow-red rounded-full font-semibold flex items-center justify-center gap-2 text-center ${
-                isTamil ? "font-tamil-ui px-5 py-3.5 text-sm sm:text-base flex-1 sm:flex-none min-w-[10rem]" : "px-7 py-4"
+                isTamil
+                  ? "font-tamil-ui px-5 py-3.5 text-sm sm:text-base flex-1 sm:flex-none min-w-[10rem]"
+                  : "px-5 py-3.5 sm:px-7 sm:py-4 text-sm sm:text-base flex-1 sm:flex-none min-w-[9rem]"
               }`}
             >
               {hero.ctaPrimary}
               <span aria-hidden>→</span>
             </a>
             <a
-              href="#track"
+              href="/track"
               className={`btn-glow-gold rounded-full font-semibold text-center ${
-                isTamil ? "font-tamil-ui px-5 py-3.5 text-sm sm:text-base flex-1 sm:flex-none min-w-[10rem]" : "px-7 py-4"
+                isTamil
+                  ? "font-tamil-ui px-5 py-3.5 text-sm sm:text-base flex-1 sm:flex-none min-w-[10rem]"
+                  : "px-5 py-3.5 sm:px-7 sm:py-4 text-sm sm:text-base flex-1 sm:flex-none min-w-[9rem]"
               }`}
             >
               {hero.ctaSecondary}
             </a>
             <a
-              href="#team"
+              href="/volunteer"
               className={`rounded-full font-semibold bg-white/10 backdrop-blur-md border border-white/30 text-white hover:bg-white/20 transition text-center ${
-                isTamil ? "font-tamil-ui px-5 py-3.5 text-sm sm:text-base w-full sm:w-auto sm:min-w-[12rem]" : "px-7 py-4"
+                isTamil
+                  ? "font-tamil-ui px-5 py-3.5 text-sm sm:text-base w-full sm:w-auto sm:min-w-[12rem]"
+                  : "px-5 py-3.5 sm:px-7 sm:py-4 text-sm sm:text-base w-full sm:w-auto"
               }`}
             >
               {hero.ctaTertiary}

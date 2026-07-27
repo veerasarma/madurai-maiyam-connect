@@ -4,6 +4,13 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { LanguageSwitcher } from "@/components/landing/LanguageSwitcher";
 import type { NavLink } from "@/content/landing";
 
+/** Keep section links working from home and from /submit, /track, /volunteer */
+function resolveNavHref(href: string): string {
+  if (!href || href === "#") return "/";
+  if (href.startsWith("#")) return `/${href}`;
+  return href;
+}
+
 function NavLinkItem({
   link,
   isTamil,
@@ -16,10 +23,11 @@ function NavLinkItem({
   compact: boolean;
 }) {
   const desktopLabel = isTamil && link.shortLabel ? link.shortLabel : link.label;
+  const href = resolveNavHref(link.href);
 
   return (
     <a
-      href={link.href}
+      href={href}
       className={`whitespace-nowrap ${textColor} hover:text-primary transition relative group font-medium ${
         isTamil
           ? `font-tamil-ui nav-tamil-link ${compact ? "text-[11px] 2xl:text-xs" : "text-xs 2xl:text-[13px]"}`
@@ -39,25 +47,50 @@ function NavLinkItem({
   );
 }
 
-export function Navbar() {
+type NavbarProps = {
+  /** Inner pages use the solid scrolled look so menus stay readable on light backgrounds */
+  variant?: "landing" | "inner";
+};
+
+export function Navbar({ variant = "landing" }: NavbarProps) {
   const { content, locale } = useLanguage();
   const { brand, nav } = content;
-  const [scrolled, setScrolled] = useState(false);
+  const isInner = variant === "inner";
+  const [scrolled, setScrolled] = useState(isInner);
   const [open, setOpen] = useState(false);
   const textColor = scrolled ? "text-foreground/75" : "text-white/90";
   const logoColor = scrolled ? "text-foreground" : "text-white";
   const isTamil = locale === "ta";
 
   useEffect(() => {
+    if (isInner) {
+      setScrolled(true);
+      return;
+    }
     const on = () => setScrolled(window.scrollY > 20);
     on();
     window.addEventListener("scroll", on);
     return () => window.removeEventListener("scroll", on);
+  }, [isInner]);
+
+  // Close drawer when viewport is wide enough for the desktop menu
+  useEffect(() => {
+    const onResize = () => {
+      if (window.matchMedia("(min-width: 1280px)").matches) setOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const rightMinWidth = isTamil
-    ? "min-w-[11.5rem] sm:min-w-[13.5rem] xl:min-w-[15.5rem] 2xl:min-w-[22rem]"
-    : "min-w-[10rem] sm:min-w-[12rem] xl:min-w-[14rem] 2xl:min-w-[18rem]";
+  // Lock body scroll while mobile menu is open
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   return (
     <motion.nav
@@ -65,27 +98,29 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass border-b border-foreground/5" : "bg-transparent"
+        scrolled ? "glass border-b border-foreground/5 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="relative flex items-center h-14 lg:h-16">
-          {/* Brand — fixed width column */}
+      <div className="container mx-auto px-3 sm:px-6 max-w-full">
+        <div className="relative flex items-center gap-2 h-14 lg:h-16 min-w-0">
+          {/* Brand */}
           <a
-            href="#"
-            className="relative z-20 flex items-center gap-2 shrink-0 w-[8.5rem] sm:w-[9.5rem]"
+            href="/"
+            className="relative z-20 flex items-center gap-2 shrink-0 min-w-0 max-w-[42%] sm:max-w-none"
           >
             <img
               src="/ChatGPT_Image_May_26__2026_at_02_39_24_PM-removebg-preview.png"
               alt="Visil191 Logo"
-              className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow-lg shrink-0"
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow-lg shrink-0"
             />
             <div className="leading-tight hidden sm:block min-w-0">
-              <div className={`font-display text-lg lg:text-xl tracking-wide whitespace-nowrap ${logoColor}`}>
+              <div
+                className={`font-display text-base sm:text-lg lg:text-xl tracking-wide whitespace-nowrap ${logoColor}`}
+              >
                 VISIL<span className="text-primary">191</span>
               </div>
               <div
-                className={`${isTamil ? "font-tamil-ui" : ""} text-[10px] leading-none mt-0.5 whitespace-nowrap ${
+                className={`${isTamil ? "font-tamil-ui" : ""} text-[9px] sm:text-[10px] leading-none mt-0.5 truncate max-w-[9rem] lg:max-w-none ${
                   scrolled ? "text-muted-foreground" : "text-white/55"
                 }`}
               >
@@ -94,8 +129,8 @@ export function Navbar() {
             </div>
           </a>
 
-          {/* Center nav — full-width overlay for true center */}
-          <div className="hidden xl:flex absolute inset-0 items-center justify-center pointer-events-none z-10 px-[9.5rem]">
+          {/* Center nav — desktop only */}
+          <div className="hidden xl:flex absolute inset-0 items-center justify-center pointer-events-none z-10 px-[10rem] 2xl:px-[12rem]">
             <div
               className={`flex items-center justify-center pointer-events-auto max-w-full ${
                 isTamil ? "gap-1.5 2xl:gap-3.5" : "gap-3 2xl:gap-5"
@@ -113,15 +148,15 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Right: language + CTAs — fixed min-width column */}
-          <div className={`relative z-20 flex items-center justify-end gap-1.5 sm:gap-2 ml-auto shrink-0 ${rightMinWidth}`}>
-            <LanguageSwitcher scrolled={scrolled} />
+          {/* Right: language + CTAs + hamburger */}
+          <div className="relative z-20 flex items-center justify-end gap-1 sm:gap-2 ml-auto shrink-0 min-w-0">
+            <LanguageSwitcher scrolled={scrolled} compact />
 
             <a
-              href="#track"
-              className={`hidden md:inline-flex items-center justify-center ${
+              href="/track"
+              className={`hidden lg:inline-flex items-center justify-center ${
                 isTamil ? "font-tamil-ui nav-tamil-link" : ""
-              } whitespace-nowrap px-2.5 lg:px-3 py-1.5 rounded-full text-[11px] lg:text-xs font-medium border transition shrink-0 ${
+              } whitespace-nowrap px-2.5 xl:px-3 py-1.5 rounded-full text-[11px] xl:text-xs font-medium border transition shrink-0 ${
                 scrolled ? "btn-ghost-light" : "border-white/35 text-white hover:bg-white/10"
               }`}
             >
@@ -132,16 +167,16 @@ export function Navbar() {
                 </>
               ) : (
                 <>
-                  <span className="lg:hidden">{nav.trackShort}</span>
-                  <span className="hidden lg:inline">{nav.track}</span>
+                  <span className="xl:hidden">{nav.trackShort}</span>
+                  <span className="hidden xl:inline">{nav.track}</span>
                 </>
               )}
             </a>
             <a
-              href="#submit"
-              className={`hidden md:inline-flex items-center justify-center btn-glow-red ${
+              href="/submit"
+              className={`hidden lg:inline-flex items-center justify-center btn-glow-red ${
                 isTamil ? "font-tamil-ui nav-tamil-link" : ""
-              } whitespace-nowrap px-2.5 lg:px-3.5 py-1.5 rounded-full text-[11px] lg:text-xs font-semibold shrink-0`}
+              } whitespace-nowrap px-2.5 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-semibold shrink-0`}
             >
               {isTamil ? (
                 <>
@@ -150,21 +185,23 @@ export function Navbar() {
                 </>
               ) : (
                 <>
-                  <span className="lg:hidden">{nav.submitShort}</span>
-                  <span className="hidden lg:inline">{nav.submit}</span>
+                  <span className="xl:hidden">{nav.submitShort}</span>
+                  <span className="hidden xl:inline">{nav.submit}</span>
                 </>
               )}
             </a>
 
             <button
+              type="button"
               aria-label={nav.menu}
+              aria-expanded={open}
               onClick={() => setOpen((o) => !o)}
               className="xl:hidden w-9 h-9 grid place-items-center rounded-lg glass shrink-0"
             >
               <div className="space-y-1.5">
-                <span className="block w-4 h-px bg-foreground" />
-                <span className="block w-4 h-px bg-foreground" />
-                <span className="block w-4 h-px bg-foreground" />
+                <span className={`block w-4 h-px ${scrolled ? "bg-foreground" : "bg-white"}`} />
+                <span className={`block w-4 h-px ${scrolled ? "bg-foreground" : "bg-white"}`} />
+                <span className={`block w-4 h-px ${scrolled ? "bg-foreground" : "bg-white"}`} />
               </div>
             </button>
           </div>
@@ -172,35 +209,43 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="xl:hidden glass border-t border-white/10 mx-3 mb-2 rounded-2xl p-4 space-y-1">
-          <div className="flex justify-end pb-2">
-            <LanguageSwitcher scrolled={scrolled} compact />
-          </div>
-          {nav.links.map((l) => (
-            <a
-              key={l.href + l.label}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className={`block ${isTamil ? "font-tamil-ui" : ""} text-foreground/85 font-medium py-2.5 px-2 rounded-lg hover:bg-foreground/5`}
-            >
-              {l.label}
-            </a>
-          ))}
-          <div className="flex flex-col gap-2 pt-3 mt-2 border-t border-white/10">
-            <a
-              href="#track"
-              onClick={() => setOpen(false)}
-              className={`btn-ghost-light block text-center ${isTamil ? "font-tamil-ui" : ""} px-5 py-2.5 rounded-full text-sm font-medium`}
-            >
-              {nav.track}
-            </a>
-            <a
-              href="#submit"
-              onClick={() => setOpen(false)}
-              className={`btn-glow-red block text-center ${isTamil ? "font-tamil-ui" : ""} px-5 py-3 rounded-full font-semibold`}
-            >
-              {nav.submit}
-            </a>
+        <div className="xl:hidden absolute left-0 right-0 top-full px-3 pb-3">
+          <div className="glass border border-foreground/10 rounded-2xl p-3 sm:p-4 max-h-[min(70vh,32rem)] overflow-y-auto overscroll-contain shadow-elegant">
+            <nav className="space-y-0.5" aria-label={nav.menu}>
+              {nav.links.map((l) => (
+                <a
+                  key={l.href + l.label}
+                  href={resolveNavHref(l.href)}
+                  onClick={() => setOpen(false)}
+                  className={`block ${isTamil ? "font-tamil-ui" : ""} text-foreground/85 font-medium py-2.5 px-3 rounded-lg hover:bg-foreground/5 active:bg-foreground/10`}
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <div className="flex flex-col gap-2 pt-3 mt-2 border-t border-foreground/10">
+              <a
+                href="/track"
+                onClick={() => setOpen(false)}
+                className={`btn-ghost-light block text-center ${isTamil ? "font-tamil-ui" : ""} px-5 py-2.5 rounded-full text-sm font-medium`}
+              >
+                {nav.track}
+              </a>
+              <a
+                href="/submit"
+                onClick={() => setOpen(false)}
+                className={`btn-glow-red block text-center ${isTamil ? "font-tamil-ui" : ""} px-5 py-3 rounded-full font-semibold`}
+              >
+                {nav.submit}
+              </a>
+              <a
+                href="/volunteer"
+                onClick={() => setOpen(false)}
+                className={`block text-center border border-foreground/15 bg-background/60 ${isTamil ? "font-tamil-ui" : ""} px-5 py-2.5 rounded-full text-sm font-medium hover:bg-foreground/5`}
+              >
+                {isTamil ? "தன்னார்வலர்" : "Volunteer"}
+              </a>
+            </div>
           </div>
         </div>
       )}
