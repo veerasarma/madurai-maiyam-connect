@@ -182,6 +182,31 @@ export function SubmitWizard({ isTamil }: SubmitWizardProps) {
     return true;
   };
 
+  const validateAllSteps = (): boolean => {
+    const errors: Record<string, string> = {};
+
+    if (!subCategoryId) {
+      toast.error(isTamil ? "ஒரு பிரிவைத் தேர்ந்தெடுக்கவும்" : "Please select a category");
+      return false;
+    }
+
+    for (const stepKey of availableSteps) {
+      if (stepKey === "grievance_category") continue;
+      const section = sectionByKey.get(stepKey);
+      for (const field of section?.fields || []) {
+        const err = validateField(field, formValues[field.key], evidenceFile);
+        if (err) errors[field.key] = err;
+      }
+    }
+
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) {
+      toast.error(isTamil ? "தேவையான புலங்களை நிரப்பவும்" : "Please fill the required fields");
+      return false;
+    }
+    return true;
+  };
+
   const goNext = () => {
     if (!validateStep()) return;
     setStep((s) => Math.min(s + 1, availableSteps.length - 1));
@@ -190,15 +215,23 @@ export function SubmitWizard({ isTamil }: SubmitWizardProps) {
   const goBack = () => setStep((s) => Math.max(s - 1, 0));
 
   const handleSubmit = async () => {
-    if (!validateStep()) return;
+    if (!validateAllSteps()) return;
     setSubmitting(true);
     try {
+      const phone = String(formValues.mobile || "").replace(/\D/g, "");
+      const name = String(formValues.name || "");
+
       let mediaIds: string[] = [];
+      const requiresEvidence = (sectionByKey.get("priority_and_proof")?.fields || []).some(
+        (field) => field.key === "evidence_file" && field.required,
+      );
+
+      if (requiresEvidence && !evidenceFile) {
+        throw new Error(isTamil ? "ஆதார கோப்பை பதிவேற்றவும்" : "Please upload a proof file.");
+      }
+
       if (evidenceFile) {
-        const mediaId = await uploadEvidenceFile(evidenceFile, {
-          phone: String(formValues.mobile || ""),
-          name: String(formValues.name || ""),
-        });
+        const mediaId = await uploadEvidenceFile(evidenceFile, { phone, name });
         mediaIds = [mediaId];
       }
 

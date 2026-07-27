@@ -1,4 +1,4 @@
-import { apiRequest } from "./client";
+import { apiRequest, getAccessToken } from "./client";
 import type {
   AuthPayload,
   ComplaintCreateResult,
@@ -66,27 +66,44 @@ export const citizenApi = {
     }
   },
 
-  presignMedia: (fileName: string, mimeType: string, size: number) =>
+  presignMedia: (
+    fileName: string,
+    mimeType: string,
+    size: number,
+    submitter?: { phone?: string; name?: string },
+  ) =>
     apiRequest<{
       mediaId: string;
       uploadUrl: string | null;
       mockMode?: boolean;
     }>("/media/presign", {
       method: "POST",
-      body: { fileName, mimeType, size },
+      auth: false,
+      body: {
+        fileName,
+        mimeType,
+        size,
+        submitterPhone: submitter?.phone,
+        submitterName: submitter?.name,
+      },
     }),
 
-  confirmMedia: (mediaId: string) =>
+  confirmMedia: (mediaId: string, submitter?: { phone?: string; name?: string }) =>
     apiRequest<unknown>("/media/confirm", {
       method: "POST",
-      body: { mediaId },
+      auth: false,
+      body: {
+        mediaId,
+        submitterPhone: submitter?.phone,
+        submitterName: submitter?.name,
+      },
     }),
 
   submitComplaint: (body: Record<string, unknown>) =>
     apiRequest<ComplaintCreateResult>("/complaints", {
       method: "POST",
       body,
-      auth: false,
+      auth: Boolean(getAccessToken()),
     }),
 
   trackComplaint: (ticketNumber: string, phone: string) =>
@@ -115,21 +132,32 @@ export async function uploadEvidenceFile(
   file: File,
   submitter?: { phone?: string; name?: string },
 ): Promise<string> {
+  const useAuth = Boolean(getAccessToken());
+  const phone = String(submitter?.phone ?? "").replace(/\D/g, "");
+  if (!useAuth && phone.length < 10) {
+    throw new Error("Mobile number is required before uploading proof.");
+  }
+
   const presign = await apiRequest<{
     mediaId: string;
     uploadUrl: string | null;
     mockMode?: boolean;
   }>("/media/presign", {
     method: "POST",
-    auth: false,
+    auth: useAuth,
     body: {
       fileName: file.name,
       mimeType: file.type || "application/octet-stream",
       size: file.size,
-      submitterPhone: submitter?.phone,
+      submitterPhone: phone || undefined,
       submitterName: submitter?.name,
     },
   });
+
+  const mediaId = String(presign.mediaId ?? "");
+  if (!mediaId) {
+    throw new Error("Upload failed: server did not return a file id.");
+  }
 
   if (presign.uploadUrl) {
     const put = await fetch(presign.uploadUrl, {
@@ -144,12 +172,12 @@ export async function uploadEvidenceFile(
 
   await apiRequest("/media/confirm", {
     method: "POST",
-    auth: false,
+    auth: useAuth,
     body: {
-      mediaId: String(presign.mediaId),
-      submitterPhone: submitter?.phone,
+      mediaId,
+      submitterPhone: phone || undefined,
       submitterName: submitter?.name,
     },
   });
-  return String(presign.mediaId);
+  return mediaId;
 }
