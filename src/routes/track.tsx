@@ -30,6 +30,14 @@ function TrackPage() {
 }
 
 function formatStatus(status: string): string {
+  if (["submitted", "area_routed", "draft"].includes(status)) return "Submitted";
+  if (["assigned_party", "assigned_volunteer"].includes(status)) return "Assigned";
+  if (["under_review", "pending_party_approval", "pending_subadmin_approval", "resolution_submitted", "escalated"].includes(status)) {
+    return "Pending";
+  }
+  if (status === "in_progress") return "May take time";
+  if (["feedback_pending", "closed"].includes(status)) return "Completed";
+  if (status === "rejected") return "Rejected";
   return status.replace(/_/g, " ");
 }
 
@@ -342,23 +350,23 @@ function TrackPageInner() {
                       </p>
                     )}
                   </button>
+                  {selectedId === item._id && detailQuery.isLoading && (
+                    <p className="px-2 pt-3 text-sm text-muted-foreground">
+                      {isTamil ? "விவரம் ஏற்றுகிறது…" : "Loading details…"}
+                    </p>
+                  )}
+                  {selectedId === item._id && detailQuery.data?.complaint && (
+                    <div className="mt-3">
+                      <TrackResultCard
+                        complaint={detailQuery.data.complaint}
+                        timeline={detailQuery.data.timeline || []}
+                        isTamil={isTamil}
+                      />
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
-
-            {selectedId && detailQuery.isLoading && (
-              <p className="text-center text-sm text-muted-foreground">
-                {isTamil ? "விவரம் ஏற்றுகிறது…" : "Loading details…"}
-              </p>
-            )}
-
-            {selectedId && detailQuery.data?.complaint && (
-              <TrackResultCard
-                complaint={detailQuery.data.complaint}
-                timeline={detailQuery.data.timeline || []}
-                isTamil={isTamil}
-              />
-            )}
 
             <button
               type="button"
