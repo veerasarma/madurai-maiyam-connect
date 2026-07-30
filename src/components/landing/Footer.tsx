@@ -6,6 +6,25 @@ export function Footer() {
   const { brand, footer } = content;
   const isTamil = locale === "ta";
 
+  const socialLinks = [
+  {
+    icon: Facebook,
+    link: "https://www.facebook.com/madurai.vijayanban",
+  },
+  {
+    icon: Instagram,
+    link: "https://www.instagram.com/madurai_vijay_anban?igsh=MTJlYTZrMTVuNzJ1bg%3D%3D",
+  },
+  {
+    icon: Twitter,
+    link: "https://x.com/VijayAnban_offl",
+  },
+  {
+    icon: Youtube,
+    link: "https://www.youtube.com/@tvkitwing-madurainorth",
+  },
+];
+
   return (
     <footer
       id="contact"
@@ -35,15 +54,17 @@ export function Footer() {
               {footer.description}
             </p>
             <div className="flex gap-3">
-              {[Facebook, Instagram, Twitter, Youtube].map((Ic, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-white/10 border border-white/15 grid place-items-center hover:bg-gold hover:text-[oklch(0.22_0.12_25)] hover:border-gold transition"
-                >
-                  <Ic className="w-4 h-4" />
-                </a>
-              ))}
+               {socialLinks.map(({ icon: Icon, link }, index) => (
+                    <a
+                      key={index}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-white/10 border border-white/15 grid place-items-center hover:bg-gold hover:text-[oklch(0.22_0.12_25)] hover:border-gold transition"
+                    >
+                      <Icon className="w-4 h-4" />
+                    </a>
+                  ))}
             </div>
           </div>
 
