@@ -129,11 +129,15 @@ export function Footer() {
                 <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
                 <span className={isTamil ? "font-tamil" : ""}>{footer.address}</span>
               </li>
-              <li className="flex gap-3 items-center">
-                <Phone className="w-4 h-4 text-gold shrink-0" />
-                <a href={`tel:${footer.phone.replace(/\s+/g, "")}`} className="hover:text-gold transition">
-                  {footer.phone}
-                </a>
+                <li className="flex items-start gap-3">
+                 <Phone className="w-4 h-4 text-gold mt-1 shrink-0" />
+                 <div className="flex flex-col space-y-1">
+                    {footer.phone.map((phone, index) => (
+                      <p key={index}>
+                        {phone}
+                      </p>
+                    ))}
+                 </div>
               </li>
               <li className="flex gap-3 items-center">
                 <Mail className="w-4 h-4 text-gold shrink-0" />

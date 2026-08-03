@@ -107,7 +107,7 @@ export type LandingContent = {
     serviceLinks: string[];
     reachUsTitle: string;
     address: string;
-    phone: string;
+    phone: string[];
     emailSupport: string;
     emailGrievance: string;
     copyright: string;
