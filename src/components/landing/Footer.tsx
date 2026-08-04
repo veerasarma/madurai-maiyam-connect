@@ -1,7 +1,7 @@
 import { Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const SOFTEAN_URL = "https://softean.com";
+const SOFTEAN_URL = "https://www.softean.com";
 
 export function Footer() {
   const { content, locale } = useLanguage();
@@ -179,7 +179,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="text-gold hover:text-white transition underline-offset-4 hover:underline font-medium"
             >
-              Softean technologies
+              Softean Technologies
             </a>
           </p>
         </div>
